@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>px2rem</title>
+    <script src="./px2rem.js"></script>
+    <style>
+        body {text-align: center;}
+        textarea,input {
+            width: 100%;
+            border: 1px solid #8c8c8c;
+            padding: 15px;
+            height: 50%;
+            outline: none;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+        button {
+            border: 1px solid rgb(41, 130, 255);
+            background-color: rgb(41, 130, 255);
+            color: #fff;
+            width: 150px;
+            line-height: 50px;
+            border-radius: 4px;
+            font-size: 16px;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        #rule {width: 200px;height: 52px;}
+    </style>
+</head>
+<body>
+    <textarea name="" id="content" rows="50"></textarea>
+    <input type="text" id="rule" placeholder="转换基数">
+    <button id="tranfer">px转rem</button>
+    <button id="tranfer2">rem转px</button>
+    <script>
+        var tranfer = document.querySelector('#tranfer')
+        var tranfer2 = document.querySelector('#tranfer2')
+        var conetnt = document.querySelector('#content')
+        var rule = document.querySelector('#rule')
+        tranfer.addEventListener('click', function(){
+            const styleContent = conetnt.value
+            const updateContent = pxAndRemInterturn({
+                content: styleContent,
+                unit: 'px',
+                rule: rule.value,
+                updateUnit: 'rem',
+            })
+            conetnt.value = updateContent
+        })
+        tranfer2.addEventListener('click', function(){
+            const styleContent = conetnt.value
+            const updateContent = pxAndRemInterturn({
+                content: styleContent,
+                unit: 'rem',
+                rule: rule.value,
+                updateUnit: 'px',
+            })
+            conetnt.value = updateContent
+        })
+    </script>
+</body>
+</html>
